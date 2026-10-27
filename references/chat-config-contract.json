@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "target": "chat_config",
+  "pageId": "bd4f9535-2b3a-4195-8257-9a20e5464b6a",
+  "definitionFile": "assets/chat-config.json",
+  "referencesRegistryFile": "references/registry.json",
+  "pageProfile": {
+    "description": "Public page display fields. Only these keys are applied on pull; unknown keys are ignored.",
+    "allowedKeys": [
+      "title",
+      "description",
+      "longDescription",
+      "profilePicture",
+      "bannerImage",
+      "bannerType",
+      "tags",
+      "category",
+      "subcategory"
+    ],
+    "neverStoreHere": [
+      "pageSlug",
+      "visibility",
+      "sharedWith",
+      "ownerId",
+      "credits",
+      "apiKeys"
+    ]
+  },
+  "publishedConfig": {
+    "description": "Published assistant runtime (prompts, model, voice, connectors, tools, agentTopology).",
+    "authoritativeType": "DigitalTwinConfig",
+    "authoritativeTypePath": "app/routes/teams/$teamSlug/team-workspaces/$unitSlug/components/configureDigitalTwin.types.ts",
+    "safeReferenceKeys": [
+      "memoryConfig.providerId",
+      "multimodalUnderstanding.image.modelId",
+      "multimodalUnderstanding.video.modelId",
+      "multimodalUnderstanding.audio.modelId",
+      "multimodalUnderstanding.file.modelId"
+    ],
+    "multimodalUnderstanding": {
+      "description": "Independent input-understanding capabilities. Distinct from chatCommandSettings, which controls generation slash commands. Store only enabled, provider family, and opaque modelId — never API keys. For google, modelId is an optional saved Gemini credential id shared by image, video, audio, and file (same API key store as Talk); omit it to reuse geminiLiveProviderId, then geminiProviderId, then the system default Gemini API key.",
+      "keys": [
+        "image",
+        "video",
+        "audio",
+        "file"
+      ],
+      "providers": [
+        "google",
+        "openrouter"
+      ],
+      "capabilityShape": {
+        "enabled": "boolean",
+        "provider": "google | openrouter",
+        "modelId": "optional saved Gemini credential id (google) or OpenRouter model reference"
+      },
+      "defaults": {
+        "image": {
+          "enabled": true,
+          "provider": "google"
+        },
+        "video": {
+          "enabled": false,
+          "provider": "google"
+        },
+        "audio": {
+          "enabled": false,
+          "provider": "google"
+        },
+        "file": {
+          "enabled": false,
+          "provider": "google"
+        }
+      },
+      "mergeFromDraft": true,
+      "distinctFrom": "chatCommandSettings",
+      "captureAndFillUses": "image"
+    },
+    "neverStoreHere": [
+      "providerSecrets",
+      "honchoWorkspaceId",
+      "rawUserIds",
+      "memoryIdentityHmacKey",
+      "conversationTranscripts",
+      "jarvisConsent",
+      "desktopCapabilities",
+      "localVoiceDeviceSettings",
+      "localVoiceModelState"
+    ]
+  },
+  "embedAppearance": {
+    "description": "Not owned by this file. `chatEmbedConfig` here is ignored on pull.",
+    "file": "assets/embed-config.json",
+    "key": "chatEmbedConfig"
+  }
+}

@@ -1,0 +1,545 @@
+{
+  "schemaVersion": 3,
+  "runtimeDataPolicy": "definitions_only",
+  "allowedModuleIds": [
+    "chat-sessions",
+    "matches",
+    "assets",
+    "movie-editor",
+    "meetings",
+    "ai-resources",
+    "connections",
+    "todos",
+    "canvas",
+    "avatar",
+    "mobile"
+  ],
+  "allowedAssetTabs": [
+    "all",
+    "images",
+    "pdfs",
+    "videos",
+    "audio",
+    "other"
+  ],
+  "allowedModuleFields": [
+    "id",
+    "enabled",
+    "label",
+    "icon",
+    "assetTabs",
+    "kind",
+    "pageId"
+  ],
+  "knowledgeBase": {
+    "fixedFooterEntry": true,
+    "allowedProvisioningModes": [
+      "managed",
+      "author",
+      "runner",
+      "ask"
+    ],
+    "privateCredentialStorage": true,
+    "forbiddenPortableFields": [
+      "token",
+      "credential",
+      "credentialRef",
+      "username",
+      "remoteUrl"
+    ]
+  },
+  "requiredUtilities": [
+    "feedback",
+    "invite",
+    "settings"
+  ],
+  "forbiddenDefinitionKeys": [
+    "javascript",
+    "script",
+    "css",
+    "tailwind",
+    "runtimeData",
+    "records",
+    "credentials",
+    "apiUrl"
+  ],
+  "supportedSchemaVersions": [
+    1,
+    2,
+    3
+  ],
+  "customModulePattern": "page:<stable-page-id>",
+  "limits": {
+    "pages": 10,
+    "sectionsPerPage": 8,
+    "componentsPerPage": 24,
+    "tableRowsDefault": 25,
+    "tableRowsMaximum": 100
+  },
+  "components": [
+    "assistant-panel",
+    "cart-items",
+    "record-cards",
+    "nutrition-summary",
+    "execution-status",
+    "playbook-list",
+    "routine-list",
+    "signal-list",
+    "data-feed-list",
+    "schedule-calendar",
+    "goal-list",
+    "meal-plan",
+    "stat-card",
+    "table",
+    "outcome-metrics",
+    "outcome-trend",
+    "outcome-baseline",
+    "outcome-observations",
+    "outcome-check-in",
+    "outcome-activity",
+    "outcome-usage",
+    "outcome-signals",
+    "meal-calendar",
+    "recipe-detail",
+    "nutrition-profile",
+    "shopping-list",
+    "inventory-list",
+    "course-publications",
+    "learning-home",
+    "lane-home",
+    "chakri-home",
+    "kai-home",
+    "openui-home",
+    "relationship-workspace",
+    "campaign-workspace"
+  ],
+  "dataPoints": {
+    "sources": [
+      "list",
+      "outcomes",
+      "workspace"
+    ],
+    "operations": [
+      "rows",
+      "count",
+      "sum",
+      "average"
+    ],
+    "filters": [
+      "eq",
+      "neq",
+      "in",
+      "exists",
+      "gte",
+      "lte"
+    ],
+    "virtualFields": [
+      "$stage",
+      "$createdAt",
+      "$updatedAt"
+    ],
+    "runnerScope": "server_required",
+    "externalUrls": false
+  },
+  "workspace": {
+    "template": "workspace",
+    "tabs": "ordered section references with optional heroicon:* icons",
+    "defaultTab": "required",
+    "maximumTabs": 8,
+    "sectionTabs": "optional ordered component references with a required defaultTab",
+    "presentation": {
+      "sidebar": [
+        "brand",
+        "surface"
+      ],
+      "secondaryAccent": "six digit hex"
+    },
+    "providers": [
+      "chat",
+      "cart",
+      "catalog",
+      "recipes",
+      "nutrition",
+      "meal-plan",
+      "executions",
+      "routines",
+      "automations",
+      "goals",
+      "coach",
+      "data-feeds",
+      "kai-inventory",
+      "kai-recipes",
+      "kai-meal-plan",
+      "kai-nutrition",
+      "kai-shopping-list",
+      "learning",
+      "relationship-lifecycle",
+      "campaign-lifecycle"
+    ],
+    "executionViews": [
+      "workflows",
+      "executions",
+      "playbooks",
+      "signals",
+      "schedule",
+      "legacy"
+    ],
+    "actions": [
+      "chat",
+      "voice",
+      "upload",
+      "command",
+      "cart.add",
+      "cart.remove",
+      "cart.quantity",
+      "cart.review",
+      "meal-plan.save",
+      "routine.create",
+      "routine.update",
+      "routine.run",
+      "routine.pause",
+      "routine.delete",
+      "automation.create",
+      "automation.update",
+      "automation.run",
+      "automation.pause",
+      "automation.delete",
+      "automation.test",
+      "meal-plan.consume",
+      "recipe.save",
+      "shopping-list.add",
+      "shopping-list.update",
+      "nutrition.profile.save",
+      "nutrition.measurement.save",
+      "nutrition.activity.save",
+      "nutrition.target.save",
+      "relationship.update",
+      "campaign.measurement.save",
+      "lifecycle.observation.import"
+    ],
+    "recipeCapture": {
+      "workflowRef": "declared workflow",
+      "outputKey": "committed structured output"
+    },
+    "previewMutations": false,
+    "signalPresets": {
+      "location": "workspace data point with provider automations",
+      "fields": [
+        "id",
+        "title",
+        "description",
+        "sourceListRef",
+        "actionId"
+      ],
+      "state": "disabled draft until the runner configures and saves it",
+      "maximum": 50
+    },
+    "lifecycleSource": "A lifecycle workspace references its existing scoped row data point through sourceDataPoint; no parallel campaign or research store."
+  },
+  "experience": {
+    "schemaVersion": 1,
+    "independentOfChatAppSchemaVersion": true,
+    "sessionMode": {
+      "values": [
+        "stepper",
+        "chat"
+      ],
+      "newPersonaDefault": "stepper",
+      "stepper": "restore the server-owned guided snapshot for every new, active, resumed, edited, and completed authenticated chat session",
+      "chat": "legacy empty-session start screen followed by the normal transcript"
+    },
+    "hosts": [
+      "authenticated-full-chat",
+      "native-persona-app"
+    ],
+    "excludedHosts": [
+      "full-embed",
+      "compact-widget",
+      "anonymous-landing",
+      "internal-playground"
+    ],
+    "startTemplates": [
+      "guided-upload",
+      "guided-intake",
+      "guided-choice",
+      "guided-prompt"
+    ],
+    "actionKinds": [
+      "command",
+      "chat",
+      "voice"
+    ],
+    "resultTemplates": [
+      "narrative",
+      "spotlight",
+      "review",
+      "card-grid",
+      "media-gallery",
+      "timeline"
+    ],
+    "resultSources": [
+      "assistant-message",
+      "structured-response",
+      "bundle-proposal",
+      "item-search",
+      "pipeline-result",
+      "task-summary",
+      "pipeline-record",
+      "artifacts"
+    ],
+    "appearanceSources": [
+      "landing-page",
+      "chat-app"
+    ],
+    "commandArguments": "optional declarative text passed to the declared command",
+    "localization": "experience-owned plain-text dictionaries, independent of the parent Chat App version",
+    "referenceExample": "references/experience-example.json",
+    "previewMutations": false
+  },
+  "learning": {
+    "block": "chatApp.learning (schemaVersion 3)",
+    "course": {
+      "required": [
+        "commands",
+        "tasks"
+      ],
+      "commands": "1-8 of { commandId, audience: parent|school, visibility? }",
+      "tasks": {
+        "required": [
+          "brief",
+          "script",
+          "quiz",
+          "approve",
+          "publish"
+        ],
+        "optional": [
+          "film",
+          "narration",
+          "frames"
+        ]
+      },
+      "intake": [
+        "ageBand",
+        "accessMode"
+      ],
+      "ageBands": "1-12 labels of at most 20 characters",
+      "minimumMastery": "0 to 1, default 0.7",
+      "visibilities": [
+        "link",
+        "family",
+        "class",
+        "private"
+      ]
+    },
+    "links": {
+      "roles": [
+        "parent",
+        "teacher"
+      ],
+      "inviteTtlDays": "1-30, default 7",
+      "eraseRoles": [
+        "parent",
+        "teacher"
+      ]
+    },
+    "views": {
+      "course-publications": "publications",
+      "verification-queue": "verifications",
+      "learning-links": "links",
+      "learning-home": "home",
+      "badge-shelf": "badges"
+    },
+    "reference": "references/learning-courses.md"
+  },
+  "routes": {
+    "block": "chatApp.routes (schemaVersion 3)",
+    "max": 12,
+    "route": {
+      "required": [
+        "id",
+        "path",
+        "title",
+        "access",
+        "template",
+        "components"
+      ],
+      "path": "up to four segments; :name captures one; first segment not 'report'",
+      "access": [
+        "public",
+        "signed-in"
+      ],
+      "template": [
+        "focus",
+        "page"
+      ],
+      "components": "1-12",
+      "surface": "web (default) or mobile; a mobile route has only id, surface, title, components"
+    },
+    "components": {
+      "heading": [
+        "text",
+        "level"
+      ],
+      "text": [
+        "text"
+      ],
+      "image": [
+        "src",
+        "alt",
+        "width"
+      ],
+      "link-button": [
+        "label",
+        "href (mobile: route:<id> or https)",
+        "variant"
+      ],
+      "course-player": [
+        "param",
+        "copy"
+      ],
+      "certificate": [
+        "param",
+        "copy"
+      ]
+    },
+    "address": "/persona/<slug>/<path>",
+    "reference": "references/persona-routes.md",
+    "mobileComponents": {
+      "heading": [
+        "text",
+        "level"
+      ],
+      "text": [
+        "text"
+      ],
+      "image": [
+        "src",
+        "alt",
+        "width"
+      ],
+      "link-button": [
+        "label",
+        "href",
+        "variant"
+      ],
+      "qr-scanner": [
+        "openRoute",
+        "hint"
+      ],
+      "persona-web-route": [
+        "path | source (scanned|app)",
+        "view",
+        "tab",
+        "sectionTab"
+      ]
+    }
+  },
+  "mobile": {
+    "block": "chatApp.mobile (schemaVersion 3)",
+    "home": "id of a mobile route",
+    "menu": "1-5 of { id, label, icon, routeId }",
+    "icons": [
+      "home",
+      "qr-code",
+      "camera",
+      "book",
+      "badge",
+      "chat",
+      "info",
+      "user",
+      "settings"
+    ],
+    "minimumAppVersion": "x.y.z, optional",
+    "reference": "references/persona-routes.md#mobile-companion"
+  },
+  "organizationMap": {
+    "schemaVersion": 1,
+    "chatAppVersion": 3,
+    "optional": true,
+    "surface": "web",
+    "hierarchy": [
+      "company-campus",
+      "department-interior",
+      "process-workspace",
+      "playbook-details"
+    ],
+    "maximumNodes": 100,
+    "nodeFields": [
+      "id",
+      "kind",
+      "label",
+      "description",
+      "parentId",
+      "color",
+      "actionIds",
+      "position",
+      "scene"
+    ],
+    "maximumActionsPerProcess": 30,
+    "actionBinding": "declared command action offered by playbook-list; resolved against current workspace catalogue",
+    "position": {
+      "x": "10..90 relative to parent",
+      "y": "10..90 relative to parent"
+    },
+    "maximumConnections": 200,
+    "connectionFields": [
+      "from",
+      "to",
+      "label"
+    ],
+    "geographic": false,
+    "runtimeDataPolicy": "definitions_only",
+    "scenes": {
+      "levels": [
+        "organization",
+        "department",
+        "process",
+        "playbook"
+      ],
+      "fields": [
+        "imageUrl",
+        "alt",
+        "aspectRatio"
+      ],
+      "nodeOverride": true,
+      "fallback": "generic isometric buildings",
+      "assets": "Persona assets/organization-map/ PNG/JPEG/WebP/AVIF at the active repository pin; HTTPS and public /images/ raster URLs remain supported",
+      "aspectRatio": "0.5..3"
+    },
+    "valueChains": {
+      "maximumPerspectives": 12,
+      "stageCount": "2..40 unique department/process IDs",
+      "fields": [
+        "id",
+        "label",
+        "description",
+        "nodeIds"
+      ],
+      "meaning": "authored end-to-end perspective, not execution dependencies or mined event logs"
+    },
+    "enabled": {
+      "default": false,
+      "activation": "explicit enabled: true; persona organization scene required",
+      "disabledEntryPoints": [
+        "header marker button",
+        "list/map switch",
+        "map deep links"
+      ]
+    }
+  },
+  "personaFeatures": {
+    "source": "chatApp",
+    "environmentFeatureGates": false,
+    "settings": {
+      "coach.groupCalls": "boolean; requires Coach enabled and voice not disabled",
+      "studio.knowledge": "boolean; requires Studio module not disabled",
+      "studio.obsidianSync": "boolean; requires team knowledge and owner-approved account/vault binding",
+      "coach.groupCallTransport": "auto | direct | livekit; auto uses direct for Gemini, xAI and connected voice adapters, and preserves LiveKit rooms for LiveKit personas"
+    },
+    "default": "off until explicitly enabled in the published persona",
+    "editors": [
+      "Persona wizard Experience",
+      "Chat App editor Utilities"
+    ]
+  }
+}

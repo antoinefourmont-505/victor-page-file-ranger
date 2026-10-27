@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "requirements": [],
+  "suites": [
+    {
+      "id": "production-readiness",
+      "name": "Production readiness",
+      "requiredForProduction": true,
+      "mode": "mock",
+      "cases": []
+    }
+  ]
+}
