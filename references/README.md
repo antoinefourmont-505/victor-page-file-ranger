@@ -14,8 +14,7 @@ Private submodules need credentials that can read the linked repositories.
 
 | Kind | Name | Path | Branch |
 |------|------|------|--------|
-| list | filing_registry | `references/lists/list-2d96408015f2` | `main` |
-| pipeline | File Ranger Pipeline | `references/pipelines/pl-f786e20bea32` | `main` |
+| — | _No linked repositories yet._ | | |
 
 `registry.json` holds the same mapping as plain JSON, readable without fetching the
 submodules. It is generated — edit the persona's pipelines, lists, and commands in the

@@ -1,29 +1,6 @@
 {
   "schemaVersion": 1,
   "pageId": "bd4f9535-2b3a-4195-8257-9a20e5464b6a",
-  "updatedAt": 1793091386723,
-  "repos": [
-    {
-      "kind": "list",
-      "id": "list_2d96408015f2",
-      "slug": "list-2d96408015f2",
-      "displayName": "filing_registry",
-      "path": "references/lists/list-2d96408015f2",
-      "url": "https://github.com/antoinefourmont-505/victor-list-filing-registry.git",
-      "branch": "main",
-      "headSha": "fda215331c532a41740503f3863642de4cd1ef6e",
-      "linkedAt": 1793091165497
-    },
-    {
-      "kind": "pipeline",
-      "id": "pl_f786e20bea32",
-      "slug": "pl-f786e20bea32",
-      "displayName": "File Ranger Pipeline",
-      "path": "references/pipelines/pl-f786e20bea32",
-      "url": "https://github.com/antoinefourmont-505/victor-pipeline-filer.git",
-      "branch": "main",
-      "headSha": "c1984f8cb18334d7ffb5adfb3bd2cebce9a1171e",
-      "linkedAt": 1793091386722
-    }
-  ]
+  "updatedAt": 1793091521051,
+  "repos": []
 }
