@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "pageId": "bd4f9535-2b3a-4195-8257-9a20e5464b6a",
-  "updatedAt": 1793091752104,
+  "updatedAt": 1793092096471,
   "repos": [
     {
       "kind": "list",
@@ -9,10 +9,10 @@
       "slug": "list-2d96408015f2",
       "displayName": "filing_registry",
       "path": "references/lists/list-2d96408015f2",
-      "url": "https://github.com/go-code-bot/go-agent-list-list_2d96408015f2-1792501371579.git",
+      "url": "https://github.com/antoinefourmont-505/victor-list-filing-registry.git",
       "branch": "main",
-      "headSha": "e2afb6d777220c73c72f15e651e2e69d79de933e",
-      "linkedAt": 1793091752103
+      "headSha": "3582301b7748c340a0294f2f32b913e6e2c97132",
+      "linkedAt": 1793092096471
     }
   ]
 }
