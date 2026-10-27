@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "pageId": "bd4f9535-2b3a-4195-8257-9a20e5464b6a",
-  "updatedAt": 1793091165497,
+  "updatedAt": 1793091221952,
   "repos": [
     {
       "kind": "list",
@@ -13,6 +13,17 @@
       "branch": "main",
       "headSha": "fda215331c532a41740503f3863642de4cd1ef6e",
       "linkedAt": 1793091165497
+    },
+    {
+      "kind": "pipeline",
+      "id": "pl_f786e20bea32",
+      "slug": "pl-f786e20bea32",
+      "displayName": "File Ranger Pipeline",
+      "path": "references/pipelines/pl-f786e20bea32",
+      "url": "https://github.com/antoinefourmont-505/victor-pipeline-file-ranger.git",
+      "branch": "main",
+      "headSha": "b070f06a1f23843f50d4a93c6cf93de183968452",
+      "linkedAt": 1793091221952
     }
   ]
 }

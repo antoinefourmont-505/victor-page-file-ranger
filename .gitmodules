@@ -2,3 +2,7 @@
 	path = references/lists/list-2d96408015f2
 	url = https://github.com/antoinefourmont-505/victor-list-filing-registry.git
 	branch = main
+[submodule "references/pipelines/pl-f786e20bea32"]
+	path = references/pipelines/pl-f786e20bea32
+	url = https://github.com/antoinefourmont-505/victor-pipeline-file-ranger.git
+	branch = main
