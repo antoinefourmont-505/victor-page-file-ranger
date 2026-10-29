@@ -1,0 +1,350 @@
+{
+  "schemaVersion": 1,
+  "resourceKey": "ontology.persona.victor",
+  "version": "0.1.0",
+  "name": "Victor — File Ranger",
+  "status": "defined",
+  "description": "Document classifier for Marc-Antoine Séris (11Tree Pte. Ltd.). 59-type taxonomy across 8 blocs (16 PRO / 43 PERSO), mirroring FILE RANGER spec automation_ranger_V2_revisee_2026-08-28.",
+  "entities": [
+    {
+      "type": "Email",
+      "description": "Inbound email from the Gmail data feed.",
+      "attributes": {
+        "email_id": {
+          "type": "string",
+          "required": true,
+          "description": "Gmail message ID"
+        },
+        "sender": {
+          "type": "string",
+          "required": true
+        },
+        "sender_domain": {
+          "type": "string"
+        },
+        "subject": {
+          "type": "string"
+        },
+        "received_date": {
+          "type": "datetime"
+        },
+        "body_snippet": {
+          "type": "string",
+          "description": "First 500 chars of body"
+        },
+        "has_attachments": {
+          "type": "boolean"
+        },
+        "attachment_count": {
+          "type": "integer"
+        },
+        "processed": {
+          "type": "boolean"
+        }
+      }
+    },
+    {
+      "type": "EmailAttachment",
+      "description": "File attached to an inbound email.",
+      "attributes": {
+        "attachment_id": {
+          "type": "string",
+          "required": true
+        },
+        "email_id": {
+          "type": "string",
+          "required": true,
+          "description": "Parent email ID"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "mime_type": {
+          "type": "string"
+        },
+        "size_bytes": {
+          "type": "integer"
+        }
+      }
+    },
+    {
+      "type": "Document",
+      "description": "Classified document derived from an email or attachment. proposed_type follows MAS 59-type taxonomy (FILE RANGER spec).",
+      "attributes": {
+        "doc_id": {
+          "type": "string",
+          "required": true
+        },
+        "source_email_id": {
+          "type": "string"
+        },
+        "filename": {
+          "type": "string"
+        },
+        "proposed_type": {
+          "type": "string",
+          "description": "One of 59 document types across 8 blocs (16 PRO, 43 PERSO)",
+          "enum": [
+            "CONTRAT_CLIENT",
+            "PROPOSITION_COMMERCIALE",
+            "NDA",
+            "RAPPORT_CLIENT",
+            "FICHE_MINORITAIRE",
+            "CARTOGRAPHIE_GROUPE",
+            "SPA",
+            "DATA_ROOM_PROJET",
+            "FACTURE_FOURNISSEUR",
+            "FACTURE_CLIENT",
+            "LEGAL_CORPORATE",
+            "REGULATOIRE_SG",
+            "RELEVE_BANCAIRE_PRO",
+            "ASSURANCE_PRO",
+            "CONTRAT_FOURNISSEUR",
+            "COMMANDE_FOURNISSEUR",
+            "PASSEPORT",
+            "CNI",
+            "PERMIS_CONDUIRE",
+            "VISA_RESIDENCE",
+            "CARTE_GRISE_VEHICULE",
+            "ATTESTATION_OFFICIELLE",
+            "PINK_ID",
+            "AVIS_IMPOT",
+            "DECLARATION_FISCALE",
+            "JUSTIFICATIF_KYC",
+            "CORRESPONDANCE_FISCALE",
+            "CONTENTIEUX_FISCAL",
+            "ATTESTATION_FISCALE",
+            "CONTENTIEUX_NB_FINANCE",
+            "TITRE_PROPRIETE_IMMO",
+            "ACTE_NOTARIE",
+            "RAPPORT_FINANCIER_PERSO",
+            "CONTRAT_BANCAIRE_PERSO",
+            "RELEVE_INVESTISSEMENT",
+            "FACTURE_TRAVAUX_IMMO",
+            "STATUTS_GFV",
+            "DOSSIER_MEDICAL",
+            "ORDONNANCE",
+            "RESULTAT_EXAMEN",
+            "CARNET_VACCINATION",
+            "CONTRAT_MUTUELLE_ASSURANCE_SANTE",
+            "COMPTE_RENDU_CONSULTATION",
+            "APNEE_SOMMEIL",
+            "MALADIE",
+            "ALLERGIE",
+            "DIPLOME_OFFICIEL",
+            "CERTIFICAT_FORMATION",
+            "CV_PROFESSIONNEL",
+            "BULLETIN_SCOLAIRE_ENFANT",
+            "INSCRIPTION_ECOLE_ACTIVITE",
+            "ATTESTATION_SCOLAIRE",
+            "FACTURE_ECOLE",
+            "DOC_VOYAGE",
+            "GARANTIE_PRODUIT",
+            "CORRESPONDANCE_ADMIN",
+            "NOTE_LECTURE_TRAVAIL",
+            "PHOTO_SCAN_NON_IDENTIFIE",
+            "RECETTE_LOISIR",
+            "UNMATCHED"
+          ]
+        },
+        "scope": {
+          "type": "string",
+          "enum": [
+            "PRO",
+            "PERSO",
+            "UNKNOWN"
+          ]
+        },
+        "bloc": {
+          "type": "integer",
+          "description": "Taxonomy bloc 1-8: 1=PRO Client, 2=PRO 11Tree, 3=Identite, 4=Fiscal, 5=Patrimoine, 6=Sante, 7=Education, 8=Autres"
+        },
+        "confidence": {
+          "type": "number",
+          "description": "Classification confidence 0.0-1.0"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "proposed_path": {
+          "type": "string",
+          "description": "Proposed OneDrive path: BUSINESS/... or PERSONAL/..."
+        },
+        "client": {
+          "type": "string",
+          "description": "Business client: ALG, CANOVIA, or CANOVIA-ASIA"
+        },
+        "person": {
+          "type": "string",
+          "description": "Family member for health/education/identity docs"
+        },
+        "year": {
+          "type": "string",
+          "description": "Fiscal year YYYY"
+        },
+        "filing_status": {
+          "type": "string",
+          "enum": [
+            "auto_filed",
+            "queued",
+            "confirmed",
+            "reclassified",
+            "rejected",
+            "injection_attempt",
+            "skipped"
+          ]
+        },
+        "run_id": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "type": "FilingEntry",
+      "description": "Human-confirmed filing decision after review.",
+      "attributes": {
+        "entry_id": {
+          "type": "string",
+          "required": true
+        },
+        "doc_id": {
+          "type": "string",
+          "required": true
+        },
+        "confirmed_type": {
+          "type": "string"
+        },
+        "confirmed_path": {
+          "type": "string"
+        },
+        "confirmed_by": {
+          "type": "string"
+        },
+        "confirmed_at": {
+          "type": "datetime"
+        },
+        "run_id": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "type": "RunSummary",
+      "description": "Log of a classify-mailbox run.",
+      "attributes": {
+        "run_id": {
+          "type": "string",
+          "required": true
+        },
+        "triggered_at": {
+          "type": "datetime"
+        },
+        "email_count": {
+          "type": "integer"
+        },
+        "auto_filed_count": {
+          "type": "integer"
+        },
+        "queued_count": {
+          "type": "integer"
+        },
+        "skipped_count": {
+          "type": "integer"
+        },
+        "injection_count": {
+          "type": "integer"
+        },
+        "status": {
+          "type": "string"
+        }
+      }
+    },
+    {
+      "type": "ReviewItem",
+      "description": "Item in the human review queue — mirrors FILE RANGER [v]/[m]/[r] CLI validation.",
+      "attributes": {
+        "item_id": {
+          "type": "string",
+          "required": true
+        },
+        "doc_id": {
+          "type": "string",
+          "required": true
+        },
+        "proposed_type": {
+          "type": "string"
+        },
+        "proposed_path": {
+          "type": "string"
+        },
+        "confidence": {
+          "type": "number"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "review_status": {
+          "type": "string",
+          "enum": [
+            "pending",
+            "confirmed",
+            "reclassified",
+            "rejected"
+          ]
+        }
+      }
+    }
+  ],
+  "relationships": [
+    {
+      "type": "has_attachment",
+      "from": "Email",
+      "to": "EmailAttachment",
+      "direction": "directed",
+      "cardinality": {
+        "from": "one",
+        "to": "many"
+      }
+    },
+    {
+      "type": "classified_as",
+      "from": "Email",
+      "to": "Document",
+      "direction": "directed",
+      "cardinality": {
+        "from": "one",
+        "to": "many"
+      }
+    },
+    {
+      "type": "confirmed_in",
+      "from": "Document",
+      "to": "FilingEntry",
+      "direction": "directed",
+      "cardinality": {
+        "from": "one",
+        "to": "one"
+      }
+    },
+    {
+      "type": "queued_as",
+      "from": "Document",
+      "to": "ReviewItem",
+      "direction": "directed",
+      "cardinality": {
+        "from": "one",
+        "to": "one"
+      }
+    },
+    {
+      "type": "logged_in",
+      "from": "Document",
+      "to": "RunSummary",
+      "direction": "directed",
+      "cardinality": {
+        "from": "many",
+        "to": "one"
+      }
+    }
+  ]
+}
